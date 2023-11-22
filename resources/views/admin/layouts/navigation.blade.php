@@ -39,6 +39,12 @@
             <span>{{ __('Manajeman Kategori Kamar') }}</span></a>
     </li>
 
+    <li class="nav-item @if(request()->routeIs('manajeman_portofolio.index')) active @endif">
+        <a class="nav-link" href="{{ route('manajeman_portofolio.index') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>{{ __('Manajeman Portofolio') }}</span></a>
+    </li>
+
     <li class="nav-item @if(request()->routeIs('about')) active @endif">
         {{-- <a class="nav-link" href="{{ route('about') }}"> --}}
             <i class="fas fa-fw fa-eye"></i>

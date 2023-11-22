@@ -1,13 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Kost;
 use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
-    public function Kategori() 
+    // Menambahkan properti fillable
+    protected $fillable = ['kategori', 'keterangan'];
+
+    // Metode untuk mendefinisikan relasi one-to-many ke model Kost
+    public function kosts()
     {
-        return $this->hasMany('App\Kategori','id_kategori', 'id');
+        return $this->hasMany(Kost::class, 'id_kategori','id');
     }
 }

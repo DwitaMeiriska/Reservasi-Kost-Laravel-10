@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Kategori as AppKategori;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Models\Kost;
-use App\Models\Kategori;
 
 class ManajemanDataKostController extends Controller
 {
@@ -13,14 +12,15 @@ class ManajemanDataKostController extends Controller
     public function index()
     {
         $kosts = Kost::all();
-        return view('kosts.index', compact('kosts'));
+        return view('admin.manajeman_data_kost.index', compact('kosts'));
     }
 
     // Menampilkan form untuk membuat kost baru
     public function create()
     {
-        $kategoris = AppKategori::all();
-        return view('kosts.create', compact('kategoris'));
+        $kategoris = Kategori::all();
+        echo $kategoris;
+        return view('admin.manajeman_data_kost.create', compact('kategoris'));
     }
 
     // Menyimpan kost baru ke database
@@ -51,22 +51,22 @@ class ManajemanDataKostController extends Controller
         $kost->status = $request->status;
         $kost->save();
 
-        return redirect()->route('kosts.index')->with('success', 'Kost berhasil ditambahkan.');
+        return redirect()->route('manajeman_data_kost.index')->with('success', 'Kost berhasil ditambahkan.');
     }
 
     // Menampilkan detail kost tertentu
     public function show($id)
     {
         $kost = Kost::findOrFail($id);
-        return view('kosts.show', compact('kost'));
+        return view('admin.manajeman_data_kost.show', compact('kost'));
     }
 
     // Menampilkan form untuk mengedit kost tertentu
     public function edit($id)
     {
         $kost = Kost::findOrFail($id);
-        $kategoris = AppKategori::all();
-        return view('kosts.edit', compact('kost', 'kategoris'));
+        $kategoris = Kategori::all();
+        return view('admin.manajeman_data_kost.edit', compact('kost', 'kategoris'));
     }
 
     // Memperbarui kost tertentu di database
@@ -99,7 +99,7 @@ class ManajemanDataKostController extends Controller
         $kost->status = $request->status;
         $kost->save();
 
-        return redirect()->route('kosts.index')->with('success', 'Kost berhasil diperbarui.');
+        return redirect()->route('manajeman_data_kost.index')->with('success', 'Kost berhasil diperbarui.');
     }
 
     // Menghapus kost tertentu dari database
@@ -107,6 +107,6 @@ class ManajemanDataKostController extends Controller
     {
         $kost = Kost::findOrFail($id);
         $kost->delete();
-        return redirect()->route('kosts.index')->with('success', 'Kost berhasil dihapus.');
+        return redirect()->route('manajeman_data_kost.index')->with('success', 'Kost berhasil dihapus.');
     }
 }

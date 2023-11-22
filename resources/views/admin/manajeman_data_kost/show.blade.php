@@ -1,5 +1,5 @@
 {{-- resources/views/admin/manajeman_data_kost/show.blade.php --}}
-@extends('layouts.admin') {{-- Ganti dengan layout admin yang sebenarnya --}}
+@extends('admin.layouts.admin') {{-- Ganti dengan layout admin yang sebenarnya --}}
 
 @section('title', 'Detail Kost')
 
@@ -15,8 +15,8 @@
             <p class="card-text"><strong>Ukuran Kamar:</strong> {{ $kost->ukuran_kamar }}</p>
             <p class="card-text"><strong>Deskripsi:</strong> {{ $kost->deskripsi }}</p>
             <p class="card-text"><strong>Status:</strong> {{ $kost->status }}</p>
-            <a href="{{ route('kosts.edit', $kost->id) }}" class="btn btn-warning">Edit</a>
-            <a href="{{ route('kosts.index') }}" class="btn btn-primary">Kembali ke Daftar Kost</a>
+            <a href="{{ route('manajeman_data_kost.edit', $kost->id) }}" class="btn btn-warning">Edit</a>
+            <a href="{{ route('manajeman_data_kost.index') }}" class="btn btn-primary">Kembali ke Daftar Kost</a>
         </div>
     </div>
 </div>

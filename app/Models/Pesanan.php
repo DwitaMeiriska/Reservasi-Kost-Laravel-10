@@ -8,15 +8,31 @@ use Illuminate\Database\Eloquent\Model;
 class Pesanan extends Model
 {
     use HasFactory;
-    protected $table = 'pesanan';
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    use HasFactory;
 
-    protected $enum = [
-        'lama_sewa' => ['1 Bulan', '6 Bulan', '12 Bulan'],
-    ];
+    protected $table = 'pesanan'; // Mengonfirmasi nama tabel
+    protected $guarded = ['id']; // Menjaga kolom ID dari mass assignment
+    protected $dates = ['tgl_sewa'];
 
-    public static function isValidEnumValue($enum, $value)
+
+
+    public function user()
     {
-        return in_array($value, $enum);
+        return $this->belongsTo(User::class);
+    }
+
+    public function kost()
+    {
+        return $this->belongsTo(Kost::class);
+    }
+
+    public function getTglSewaFormattedAttribute()
+    {
+        return $this->tgl_sewa->format('d-m-Y');
+    }
+
+    public function setHargaKostAttribute($value)
+    {
+        $this->attributes['harga_kost'] = str_replace(',', '', $value);
     }
 }

@@ -4,9 +4,9 @@
 @section('content')
 <h1>Daftar Kost</h1>
 
-<a href="{{ route('kosts.create') }}">Tambah Kost Baru</a>
+<a href="{{ route('manajeman_data_kost.create') }}">Tambah Kost Baru</a>
 
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Nama Kamar</th>
@@ -24,12 +24,12 @@
                 <td>{{ $kost->ukuran_kamar }}</td>
                 <td>{{ $kost->status }}</td>
                 <td>
-                    <a href="{{ route('kosts.show', $kost->id) }}">View</a>
-                    <a href="{{ route('kosts.edit', $kost->id) }}">Edit</a>
-                    <form action="{{ route('kosts.destroy', $kost->id) }}" method="POST">
+                    <a href="{{ route('manajeman_data_kost.show', $kost->id) }}" class="btn btn-warning">View</a>
+                    <a href="{{ route('manajeman_data_kost.edit', $kost->id) }}" class="btn btn-warning">Edit</a>
+                    <form action="{{ route('manajeman_data_kost.destroy', $kost->id) }}" method="POST" style="display: inline-block;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit">Delete</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?')">Hapus</button>
                     </form>
                 </td>
             </tr>

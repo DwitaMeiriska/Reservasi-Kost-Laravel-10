@@ -1,5 +1,5 @@
 {{-- resources/views/admin/manajeman_data_transaksi/index.blade.php --}}
-@extends('layouts.admin') {{-- Pastikan ini sesuai dengan layout admin Anda --}}
+@extends('admin.layouts.admin') {{-- Pastikan ini sesuai dengan layout admin Anda --}}
 
 @section('title', 'Manajemen Data Transaksi')
 
@@ -40,24 +40,24 @@
                     <td>{{ $order->nama }}</td>
                     <td>{{ $order->nama_kost }}</td>
                     <td>Rp{{ number_format($order->harga_kost, 2, ',', '.') }}</td>
-                    <td>{{ $order->tgl_sewa->format('d/m/Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($order->tgl_sewa)->format('D, d/m/Y') }}</td>
                     <td>{{ $order->lama_sewa }}</td>
                     <td>Rp{{ number_format($order->total_harga, 2, ',', '.') }}</td>
                     <td>{{ $order->status }}</td>
                     <td>
                         @if($order->status == 'Menunggu Verifikasi')
-                            <form action="{{ route('manajeman_data_transaksi.terima', $order->id) }}" method="POST">
+                            <form action="{{ route('manajeman_data_transaksi.terima', $order->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" class="btn btn-success">Terima</button>
                             </form>
-                            <form action="{{ route('manajeman_data_transaksi.tolak', $order->id) }}" method="POST">
+                            <form action="{{ route('manajeman_data_transaksi.tolak', $order->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('PUT')
                                 <button type="submit" class="btn btn-danger">Tolak</button>
                             </form>
                         @endif
-                        <form action="{{ route('manajeman_data_transaksi.destroy', $order->id) }}" method="POST">
+                        <form action="{{ route('manajeman_data_transaksi.destroy', $order->id) }}" method="POST" class="d-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-warning">Hapus</button>

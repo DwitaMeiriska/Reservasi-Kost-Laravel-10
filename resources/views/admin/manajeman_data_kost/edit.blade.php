@@ -6,7 +6,7 @@
 @section('content')
 <div class="container mt-4">
     <h1>Edit Kost: {{ $kost->nama_kamar }}</h1>
-    <form action="{{ route('kosts.update', $kost->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('manajeman_data_kost.update', $kost->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT') {{-- Spesifikasikan metode HTTP PUT untuk update --}}
 

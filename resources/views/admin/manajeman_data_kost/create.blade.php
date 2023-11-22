@@ -6,14 +6,14 @@
 @section('content')
 <div class="container mt-4">
     <h1>Tambah Kost Baru</h1>
-    <form action="{{ route('kosts.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('manajeman_data_kost.store') }}" method="POST" enctype="multipart/form-data">
         @csrf {{-- CSRF token untuk keamanan form --}}
         <div class="mb-3">
             <label for="kategori_id" class="form-label">Kategori</label>
             <select name="kategori_id" id="kategori_id" class="form-select" required>
                 {{-- Asumsi Anda sudah mengirimkan variabel $kategoris dari controller --}}
                 @foreach ($kategoris as $kategori)
-                    <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+                    <option value="{{ $kategori->id }}">{{ $kategori->kategori }}</option>
                 @endforeach
             </select>
         </div>

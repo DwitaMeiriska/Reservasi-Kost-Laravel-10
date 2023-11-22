@@ -13,9 +13,12 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ManajemanDataKostController;
+use App\Http\Controllers\ManajemanDataTransaksiController;
+use App\Http\Controllers\ManajemanPortofolioController;
 
 // INI REGISTER USER use App\Http\Controllers\PesanKostController;
 
@@ -73,6 +76,18 @@ Route::middleware(['auth'])->group(function () {
             Route::put('/{kategori}', [KategoriController::class, 'update'])->name('update');
             Route::delete('/{kategori}', [KategoriController::class, 'destroy'])->name('destroy');
         });
+
+        //CRUD Route Portofolio
+        Route::resource('admin/portofolio', ManajemanPortofolioController::class)
+        ->names([
+            'index'   => 'manajeman_portofolio.index',
+            'create'  => 'manajeman_portofolio.create',
+            'store'   => 'manajeman_portofolio.store',
+            'show'    => 'manajeman_portofolio.show',
+            'edit'    => 'manajeman_portofolio.edit',
+            'update'  => 'manajeman_portofolio.update',
+            'destroy' => 'manajeman_portofolio.destroy',
+        ]);
     });
 });
 

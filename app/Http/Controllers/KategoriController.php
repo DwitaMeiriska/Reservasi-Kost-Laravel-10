@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Kategori as AppKategori;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -11,7 +10,7 @@ class KategoriController extends Controller
     // Menampilkan daftar kategori
     public function index()
     {
-        $kategoris = AppKategori::all();
+        $kategoris = Kategori::all();
         return view('admin.kategori.index', compact('kategoris'));
     }
 
@@ -29,18 +28,18 @@ class KategoriController extends Controller
             'keterangan' => 'required|string'
         ]);
 
-        AppKategori::create($request->all());
+        Kategori::create($request->all());
         return redirect()->route('kategori.index')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     // Menampilkan form untuk mengedit kategori
-    public function edit(AppKategori $kategori)
+    public function edit(Kategori $kategori)
     {
         return view('admin.kategori.edit', compact('kategori'));
     }
 
     // Memperbarui kategori di database
-    public function update(Request $request, AppKategori $kategori)
+    public function update(Request $request, Kategori $kategori)
     {
         $request->validate([
             'kategori' => 'required|string',
@@ -52,7 +51,7 @@ class KategoriController extends Controller
     }
 
     // Menghapus kategori dari database
-    public function destroy(AppKategori $kategori)
+    public function destroy(Kategori $kategori)
     {
         $kategori->delete();
         return redirect()->route('kategori.index')->with('success', 'Kategori berhasil dihapus.');
