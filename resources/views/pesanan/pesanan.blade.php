@@ -149,22 +149,18 @@
                     </script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    var ulasanTabButton = document.getElementById('ulasan-tab');
-    if (ulasanTabButton) {
-        ulasanTabButton.addEventListener('click', function (e) {
+        // Ketika tombol "Ulasan (0)" ditekan, aktifkan tab ulasan
+        document.getElementById('ulasan-tab').addEventListener('click', function (e) {
             e.preventDefault();
             var ulasanTab = document.getElementById('tab-pane-3');
             var deskripsiTab = document.getElementById('tab-pane-1');
 
-            if (ulasanTab && deskripsiTab) {
-                ulasanTab.classList.add('show', 'active');
-                deskripsiTab.classList.remove('show', 'active');
-            }
-        });
-    }
-});
 
+            ulasanTab.classList.add('show', 'active');
+            deskripsiTab.classList.remove('show', 'active');
+
+        });
+        
 
         // Ketika tombol "Deskripsi" ditekan, aktifkan tab deskripsi
         document.getElementById('deskripsi-tab').addEventListener('click', function (e) {
