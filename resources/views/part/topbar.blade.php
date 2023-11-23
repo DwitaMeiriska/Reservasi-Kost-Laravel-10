@@ -25,7 +25,8 @@
                 <li><a href="{{ route('riwayat_transaksi.index') }}"
                         class="{{ request()->is('riwayat_transaksi*') ? 'active' : '' }}">Riwayat Transaksi</a></li>
                 <li><a href="{{ route('portofolio.index') }}"
-                        class="{{ request()->is('portofolio*') ? 'active' : '' }}">Portofolio</a></li> Kami</a></li>
+                        class="{{ request()->is('portofolio*') ? 'active' : '' }}">Portofolio</a></li>
+                        <li><a href="{{ route('about.index') }}" class="{{ request()->is('about*') ? 'active' : '' }}">Tentang Kami</a></li>
                 <li><a href="{{ route('contact.index') }}"
                         class="{{ request()->is('contact*') ? 'active' : '' }}">Kontak</a></li>
 

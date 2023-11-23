@@ -35,4 +35,5 @@ class Pesanan extends Model
     {
         $this->attributes['harga_kost'] = str_replace(',', '', $value);
     }
+
 }

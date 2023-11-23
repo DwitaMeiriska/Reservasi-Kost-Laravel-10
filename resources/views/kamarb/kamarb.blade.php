@@ -22,7 +22,7 @@
             <div class="post-item position-relative h-100">
 
               <div class="post-img position-relative overflow-hidden">
-                <img src="{{ $kost->gambar }}" class="img-fluid" alt="">
+                <img src="{{ Storage::url($kost->gambar) }}" class="card-img-top" alt="Gambar Kost" style="max-width: 100%; height: auto;">
               </div>
 
               <div class="post-content d-flex flex-column">
@@ -47,7 +47,7 @@
             </div>
           </div><!-- End post list item -->
           @endforeach
-          
+
         </div><!-- End blog posts list -->
 
       </div>

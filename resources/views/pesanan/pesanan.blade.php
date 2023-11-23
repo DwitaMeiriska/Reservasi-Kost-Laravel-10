@@ -38,18 +38,18 @@
                     </a>
                 </div>
             </div>
-            
-            
+
+
             <div class="col-lg-7 pb-5">
                 <form>
                 @foreach($listkost as $kosts)
                 <div class="mt-2">
                 <p class="fs-2 fw-bold mb-0">{{$kosts->nama_kamar}}</p>
-                <p class="fs-5 mb-2">{{$kosts->harga_kamar}}</p> 
+                <p class="fs-5 mb-2">{{$kosts->harga_kamar}}</p>
                 <p class="fs-5 mb-2">{{$kosts->ukuran_kamar}}</p>
                 <p class="fs-5 mb-2">{{$kosts->deskripsi}}</p>
                 </div>
-              
+
                 <div class="d-flex align-items-center mb-4 pt-2">
                     <button type="button" class="btn btn-secondary px-3">
                         <i class=""></i> <a href="{{ route('pembayaran', ['id' => $kosts->id]) }}" class="text-light">Pesan Kost</a>
@@ -57,7 +57,7 @@
                 </div>
                 @endforeach
             </div>
-    
+
         </form>
         </div>
         <div class="row px-xl-5">
@@ -116,10 +116,10 @@
                             </div>
                         </form>
                     </div>
-                    
+
                     <script>
                         // ... (Bagian sebelumnya tetap sama) ...
-                    
+
                         // Dynamically add rating stars
                         var ratingStarsContainer = document.getElementById('rating-stars');
                         for (var i = 1; i <= 5; i++) {
@@ -133,7 +133,7 @@
                                 ratingInput.name = 'rating';
                                 ratingInput.value = this.dataset.rating;
                                 document.getElementById('ulasan-form').appendChild(ratingInput);
-                    
+
                                 // Update the appearance of stars based on the selected rating
                                 for (var j = 1; j <= 5; j++) {
                                     var star = ratingStarsContainer.querySelector('[data-rating="' + j + '"]');
@@ -147,24 +147,31 @@
                             ratingStarsContainer.appendChild(starIcon);
                         }
                     </script>
-                    
+
     <script>
-        // Ketika tombol "Ulasan (0)" ditekan, aktifkan tab ulasan
-        document.getElementById('ulasan-tab').addEventListener('click', function (e) {
+        document.addEventListener('DOMContentLoaded', function () {
+    var ulasanTabButton = document.getElementById('ulasan-tab');
+    if (ulasanTabButton) {
+        ulasanTabButton.addEventListener('click', function (e) {
             e.preventDefault();
             var ulasanTab = document.getElementById('tab-pane-3');
             var deskripsiTab = document.getElementById('tab-pane-1');
-            
-            ulasanTab.classList.add('show', 'active');
-            deskripsiTab.classList.remove('show', 'active');
+
+            if (ulasanTab && deskripsiTab) {
+                ulasanTab.classList.add('show', 'active');
+                deskripsiTab.classList.remove('show', 'active');
+            }
         });
-    
+    }
+});
+
+
         // Ketika tombol "Deskripsi" ditekan, aktifkan tab deskripsi
         document.getElementById('deskripsi-tab').addEventListener('click', function (e) {
             e.preventDefault();
             var ulasanTab = document.getElementById('tab-pane-3');
             var deskripsiTab = document.getElementById('tab-pane-1');
-            
+
             deskripsiTab.classList.add('show', 'active');
             ulasanTab.classList.remove('show', 'active');
         });

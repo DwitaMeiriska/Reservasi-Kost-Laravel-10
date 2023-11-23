@@ -4,7 +4,7 @@
 @section('content')
 <h1>Daftar Kost</h1>
 
-<a href="{{ route('manajeman_data_kost.create') }}">Tambah Kost Baru</a>
+<a href="{{ route('manajeman_data_kost.create') }}" class="btn btn-primary mb-3">Tambah Kost Baru</a>
 
 <table class="table">
     <thead>

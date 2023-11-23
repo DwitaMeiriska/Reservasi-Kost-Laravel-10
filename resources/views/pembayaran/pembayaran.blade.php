@@ -91,20 +91,20 @@
                   </div>
                   @endforeach
                 </div>
-                
+
                 <hr class="mb-4">
                 <button type="submit" class="btn btn-primary btn-block">Daftar</button>
               </form>
         <table class="table table-bordered">
             <thead>
-               
+
             </tbody>
         </table>
     </div>
 
             </div>
           </div>
-    
+
           <footer class="my-5 pt-5 text-muted text-center text-small">
             <p class="mb-1">© Kost Thariq</p>
           </footer>
@@ -112,18 +112,18 @@
         <script>
         document.getElementById('pesan-kost-button').addEventListener('click', function (e) {
             e.preventDefault();
-    
+
             // Lakukan logika atau permintaan Ajax sesuai kebutuhan
             // Misalnya, Anda bisa melakukan permintaan Ajax ke server di sini.
-    
+
             // Setelah berhasil, tampilkan lapisan status dengan pesan berhasil.
             var statusLayer = document.getElementById('status-layer');
             statusLayer.style.display = 'block';
         });
     </script>
 
-    </div>     
-</div> 
+    </div>
+</div>
     </section><!-- End Our Projects Section -->
 
   </main><!-- End #main -->
@@ -135,7 +135,7 @@
           function hitungTotalHarga() {
               var lamaSewa = parseInt($('#lama_sewa').val());
               var hargaKost = parseInt($('#harga_kost').val());
-  
+
               if (!isNaN(lamaSewa) && !isNaN(hargaKost)) {
                   var totalHarga = lamaSewa * hargaKost;
                   $('#total_harga').val(totalHarga);
@@ -143,17 +143,17 @@
                   $('#total_harga').val('');
               }
           }
-  
+
           // Event listener untuk menghitung total harga saat lama sewa atau harga kost berubah
           $('#lama_sewa, #harga_kost').change(function () {
               hitungTotalHarga();
           });
-  
+
           // Panggil fungsi hitungTotalHarga pada saat halaman dimuat
           hitungTotalHarga();
       });
   </script>
-  
+
 
 
 @endsection

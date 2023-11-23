@@ -16,7 +16,7 @@ class PesananController extends Controller
      */
     public function index()
     {
-        
+
         return view('pesanan.pesanan');
     }
 
@@ -31,7 +31,7 @@ class PesananController extends Controller
         ->get();
 
         return view('pesanan.pesanan', compact('listkost', 'nama_kamar', 'harga_kamar', 'ulasans'));
-    
+
     }
 
     public function pembayaran(Request $request, $id){
@@ -45,7 +45,7 @@ class PesananController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->all()); 
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string',
             'nama_kost' => 'required|string',
@@ -61,7 +61,7 @@ class PesananController extends Controller
                 echo $errors;
             }
         }
-        
+
         else{
             // $tgl_sewa = date("Y-m-d".strtotime($request->input('tgl_sewa')));
 
