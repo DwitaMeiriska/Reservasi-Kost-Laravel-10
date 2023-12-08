@@ -42,4 +42,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Di dalam model User
+
+/**
+ * Check if the user has a successful booking.
+ *
+ * @return bool
+ */
+    public function hasSuccessfulBooking()
+    {
+        return $this->pesanan()->where('status', 'Sukses')->exists();
+    }
+
+// Pastikan Anda memiliki relationship 'pesanan' yang terdefinisi di dalam model User
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class);
+    }
+
 }

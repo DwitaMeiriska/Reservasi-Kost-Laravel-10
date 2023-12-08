@@ -19,6 +19,7 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ManajemanDataKostController;
 use App\Http\Controllers\ManajemanDataTransaksiController;
 use App\Http\Controllers\ManajemanPortofolioController;
+use App\Http\Controllers\UlasanAdminController;
 
 // INI REGISTER USER use App\Http\Controllers\PesanKostController;
 
@@ -88,6 +89,13 @@ Route::middleware(['auth'])->group(function () {
             'update'  => 'manajeman_portofolio.update',
             'destroy' => 'manajeman_portofolio.destroy',
         ]);
+        Route::prefix('admin/ulasan')->name('ulasan.')->group(function () {
+            Route::get('/', [UlasanAdminController::class, 'index'])->name('index');
+            Route::post('/', [UlasanAdminController::class, 'store'])->name('store');
+            Route::get('/{ulasan}', [UlasanAdminController::class, 'show'])->name('show'); // Jika Anda ingin menampilkan detail ulasan
+            Route::put('/{ulasan}', [UlasanAdminController::class, 'update'])->name('update');
+            Route::delete('/{ulasan}', [UlasanAdminController::class, 'destroy'])->name('destroy');
+        });
     });
 });
 
@@ -109,11 +117,9 @@ Route::get('/kamarb', [KostController::class, 'indexB']);
 Route::get('/pesanan/{id}', [KostController::class, 'show'])->name('show');
 Route::get('/show/{id}', [PesananController::class, 'pemesanan'])->name('show');
 Route::get('/pembayaran/{id}', [PesananController::class, 'pembayaran'])->name('pembayaran');
-Route::get('/riwayat_transaksi', [PesananController::class, 'transaksi'])->name('riwayat_transaksi.index');
-Route::get('/pembayaran/success', function () {
-    return view('pembayaran.success');
-})->name('success');
 
+Route::get('/riwayat_transaksi',[PesananController::class, 'transaksi'])->name ('riwayat_transaksi.index');
+// Route::get('/pembayaran/sukses',[PesananController::class, 'sukses'])->name ('pembayaran.sukses');
+Route::post('/buktiTransaki/{id}',[PesananController::class, 'buktiTransaksi'])->name ('pembayaran.sukses');
 Route::post('/ulasan', [UlasanController::class, 'store'])->name('ulasan.store');
 Route::post('/pembayaran', [PesananController::class, 'store'])->name('pembayaran.store');
-

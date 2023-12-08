@@ -3,7 +3,7 @@
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ asset('image/img-blank.png') }});">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ asset('image/gamabarfull.jpg') }});">
       <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
         <h2>Pembayaran</h2>
@@ -62,15 +62,15 @@
                   <input type="hidden" name="kost_id" id="kost_id" value="{{ $kosts->id }}">
                   <div class="mb-3">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="{{ auth()->user()->name}}" required="" readonly>
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="{{ auth()->user()->name }}" required="" readonly>
                   </div>
                   <div class="mb-3">
                     <label for="nama_kost">Nama Kamar</label>
-                    <input type="text" class="form-control" name="nama_kost" id="nama_kost" placeholder="Nama Kamar" value="{{$kosts->nama_kamar}}" required="">
+                    <input type="text" class="form-control" name="nama_kost" id="nama_kost" placeholder="Nama Kamar" value="{{$kosts->nama_kamar}}" required="" readonly>
                   </div>
                   <div class="mb-3">
                     <label for="harga_kost">Harga Kost</label>
-                    <input type="text" class="form-control" name="harga_kost" id="harga_kost" placeholder="Harga Kost" value="{{$kosts->harga_kamar}}" required="">
+                    <input type="text" class="form-control" name="harga_kost" id="harga_kost" placeholder="Harga Kost" value="{{$kosts->harga_kamar}}" required="" readonly>
                   </div>
                   <div class="mb-3">
                     <label for="tgl_sewa">Tanggal Sewa</label>

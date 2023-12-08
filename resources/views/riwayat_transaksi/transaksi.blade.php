@@ -1,38 +1,39 @@
 @extends('part.layouts')
+
 @section('content')
 <main id="main">
-
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ asset('image/img-blank.png') }});">
-      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-
-        <h2>Riwayat Transaksi</h2>
-
-      </div>
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ asset('image/gambarfull.jpg') }});">
+        <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+            <h2>Riwayat Transaksi</h2>
+        </div>
     </div><!-- End Breadcrumbs -->
 
-    <!-- ======= Our Projects Section ======= -->
-    <section id="projects" class="projects p-4">
-        <div class="row mb-2">
-            <div class="col-md-6">
-              @foreach ($pesanan as $pesanan)
-              <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                  <strong class="d-inline-block mb-2 text-primary">{{$pesanan->nama_kost}}</strong>
-                  <div class="mb-1 text-muted">{{$pesanan->harga_kost}}</div>
-                  <div class="mb-1 text-muted">{{$pesanan->tgl_sewa}}</div>
-                  <div class="mb-1 text-muted">{{$pesanan->lama_sewa}}</div>
-                  <p class="card-text mb-auto">{{$pesanan->total_harga}}</p>
+    <!-- ======= Riwayat Transaksi Section ======= -->
+    <section id="riwayat-transaksi" class="p-4">
+        <div class="container">
+            @forelse ($pesanan as $order)
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <strong>{{ $order->nama_kost }}</strong>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Harga Kost: Rp{{ number_format($order->harga_kost, 2, ',', '.') }}</p>
+                        <p class="card-text">Tanggal Sewa: {{ $order->tgl_sewa }}</p>
+                        <p class="card-text">Lama Sewa: {{ $order->lama_sewa }} Bulan</p>
+                        <p class="card-text">Total Harga: Rp{{ number_format($order->total_harga, 2, ',', '.') }}</p>
+                        <p class="card-text">
+                            Status:
+                            <span class="{{ $order->status == 'Gagal' ? 'bg-danger' : ($order->status == 'Sukses' ? 'bg-success' : ($order->status == 'Menunggu Verifikasi' ? 'bg-warning' : 'bg-secondary')) }} text-white px-2 py-1 rounded">
+                                {{ $order->status }}
+                            </span>
+                        </p>
+                    </div>
                 </div>
-              </div>
-              @endforeach
-            </div>
-
-    </section><!-- End Our Projects Section -->
-
-  </main><!-- End #main -->
-
-
-
-
+            @empty
+                <div class="alert alert-info">Tidak ada riwayat transaksi.</div>
+            @endforelse
+        </div>
+    </section>
+</main>
 @endsection

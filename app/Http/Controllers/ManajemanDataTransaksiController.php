@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pesanan;
+use App\Models\Kost;
 
 
 class ManajemanDataTransaksiController extends Controller
@@ -11,8 +12,9 @@ class ManajemanDataTransaksiController extends Controller
     // Menampilkan daftar pesanan
     public function index()
     {
-        $pesanan = Pesanan::all();
+        $pesanan = Pesanan::with('buktiTransaksi')->get();
         return view('admin.manajeman_data_transaksi.index', compact('pesanan'));
+
     }
 
     // Mengupdate status pesanan menjadi 'Sukses'
@@ -20,6 +22,12 @@ class ManajemanDataTransaksiController extends Controller
     {
         $pesanan = Pesanan::findOrFail($id);
         $pesanan->update(['status' => 'Sukses']);
+
+        $idKost = $pesanan->kost_id;
+
+        // Temukan dan perbarui status dari model 'Kost' yang terkait
+        $statususer = Kost::findOrFail($idKost);
+        $statususer->update(['status' => 'Tidak Tersedia']);
 
         return redirect()->route('manajeman_data_transaksi.index')->with('success', 'Pesanan diterima.');
     }

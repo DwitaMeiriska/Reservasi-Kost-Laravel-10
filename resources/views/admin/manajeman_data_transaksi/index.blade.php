@@ -30,6 +30,7 @@
                 <th>Lama Sewa</th>
                 <th>Total Harga</th>
                 <th>Status</th>
+                <th>Bukti Transaksi</th> <!-- Kolom baru untuk bukti transaksi -->
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -44,6 +45,13 @@
                     <td>{{ $order->lama_sewa }}</td>
                     <td>Rp{{ number_format($order->total_harga, 2, ',', '.') }}</td>
                     <td>{{ $order->status }}</td>
+                    <td>
+                        @if($order->buktiTransaksi)
+                        <a href="{{ url('/image/'.$order->buktiTransaksi->gambar) }}" target="_blank">Lihat Bukti</a>
+                        @else
+                            Tidak Ada Bukti
+                        @endif
+                    </td>
                     <td>
                         @if($order->status == 'Menunggu Verifikasi')
                             <form action="{{ route('manajeman_data_transaksi.terima', $order->id) }}" method="POST" class="d-inline">

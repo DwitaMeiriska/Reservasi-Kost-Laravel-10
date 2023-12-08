@@ -8,32 +8,34 @@ use Illuminate\Database\Eloquent\Model;
 class Pesanan extends Model
 {
     use HasFactory;
-    use HasFactory;
+    protected $table = 'pesanan';
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    protected $table = 'pesanan'; // Mengonfirmasi nama tabel
-    protected $guarded = ['id']; // Menjaga kolom ID dari mass assignment
-    protected $dates = ['tgl_sewa'];
-
-
+    protected $enum = [
+        'lama_sewa' => ['1 Bulan', '6 Bulan', '12 Bulan'],
+    ];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+    return $this->belongsTo(User::class);
     }
 
     public function kost()
     {
-        return $this->belongsTo(Kost::class);
+    return $this->belongsTo(Kost::class);
     }
 
-    public function getTglSewaFormattedAttribute()
+    public static function isValidEnumValue($enum, $value)
     {
-        return $this->tgl_sewa->format('d-m-Y');
+        return in_array($value, $enum);
     }
 
-    public function setHargaKostAttribute($value)
+    public function transaksi(){
+
+    }
+    public function buktiTransaksi()
     {
-        $this->attributes['harga_kost'] = str_replace(',', '', $value);
+        return $this->hasOne(BuktiTransaksi::class, 'pesanan_id'); // Asumsikan 'pesanan_id' adalah foreign key
     }
 
 }

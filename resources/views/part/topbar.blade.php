@@ -40,7 +40,7 @@
                         <li style="align-items: center; text-align: center"><a href="{{ route('admin') }}"
                                 class=""><i class="bi bi-house-gear-fill fs-6 ms-3"></i></a></li>
                     @else
-                        <li style="align-items: center; text-align: center"><a href="{{ route('users.index') }}"
+                        <li style="align-items: center; text-align: center"><a href="{{ route('home') }}"
                                 class=""><i class="bi bi-house-gear-fill fs-6 ms-3"></i> &nbsp; {{Auth::user()->name}}</a></li>
                     @endif
                 @endauth

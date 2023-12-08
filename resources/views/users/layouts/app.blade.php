@@ -27,7 +27,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-@include('user.layouts.navigation')
+@include('users.layouts.navigation')
 
 <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">

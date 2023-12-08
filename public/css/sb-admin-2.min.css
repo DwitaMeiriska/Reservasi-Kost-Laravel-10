@@ -11655,3 +11655,49 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%
 }
+
+
+/* Add this to your admin stylesheet */
+
+.checked {
+    color: orange;
+    /* Warna bintang ketika aktif */
+}
+
+.fa-star {
+    color: #ccc;
+    /* Warna bintang ketika tidak aktif */
+}
+
+
+/* Kelas umum untuk bintang, tidak aktif secara default */
+
+.star-rating .star {
+    color: gray;
+}
+
+
+/* Kelas untuk bintang aktif */
+
+.star-rating .star.active {
+    color: gold;
+}
+
+
+/* Contoh untuk bintang 1 aktif */
+
+.star-rating.one-star .star:nth-child(1) {
+    color: gold;
+}
+
+
+/* dan seterusnya, untuk 2 bintang aktif, 3 bintang aktif, dll... */
+
+.btn-available {
+    background-color: #28a745;
+    /* Ini adalah warna hijau bootstrap */
+    color: white;
+    /* Atur warna teks menjadi putih agar mudah dibaca */
+    border-color: #28a745;
+    /* Atur warna border agar serasi dengan background */
+}

@@ -3,7 +3,7 @@
 <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ asset('image/img-blank.png') }});">
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url({{ asset('image/gambarfull.jpg') }});">
       <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
 
         <h2>Detail Kamar</h2>
@@ -18,16 +18,16 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner border">
                         <div class="carousel-item">
-                            <img class="w-100 h-100" src="{{ asset('image/img-blank.png') }}" alt="Product Image 1">
+                            <img class="w-100 h-100" src="{{ Storage::url($kost->gambar) }}" class="card-img-top" alt="Gambar Kost" style="max-width: 100%; height: auto;">
                         </div>
                         <div class="carousel-item">
-                            <img class="w-100 h-100" src="{{ asset('image/img-blank.png') }}" alt="Product Image 2">
+                            <img class="w-100 h-100" src="{{ Storage::url($kost->gambar) }}" class="card-img-top" alt="Gambar Kost" style="max-width: 100%; height: auto;">
                         </div>
                         <div class="carousel-item active">
-                            <img class="w-100 h-100" src="{{ asset('image/img-blank.png') }}" alt="Product Image 3">
+                            <img class="w-100 h-100" src="{{ Storage::url($kost->gambar) }}" class="card-img-top" alt="Gambar Kost" style="max-width: 100%; height: auto;">
                         </div>
                         <div class="carousel-item">
-                            <img class="w-100 h-100" src="{{ asset('image/img-blank.png') }}" alt="Product Image 4">
+                            <img class="w-100 h-100" src="{{ Storage::url($kost->gambar) }}" class="card-img-top" alt="Gambar Kost" style="max-width: 100%; height: auto;">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
@@ -51,8 +51,11 @@
                 </div>
 
                 <div class="d-flex align-items-center mb-4 pt-2">
-                    <button type="button" class="btn btn-secondary px-3">
-                        <i class=""></i> <a href="{{ route('pembayaran', ['id' => $kosts->id]) }}" class="text-light">Pesan Kost</a>
+                    <button type="button" class="btn btn-success {{ $kosts->status == 'Tidak Tersedia' ? 'danger' : 'secondary' }} mb-3" {{ $kosts->status == 'Tidak Tersedia' ? 'disabled' : '' }}>
+                        <i class=""></i> <a href="{{ route('pembayaran', ['id' => $kosts->id]) }}" class="text-light" {{ $kosts->status == 'Tidak Tersedia' ? 'readonly' : '' }}
+                            >{{ $kosts->status == 'Tidak Tersedia' ? 'Tidak tersedia' : 'Pesan Kos' }}</a>
+                    </button>
+
                     </button>
                 </div>
                 @endforeach
@@ -96,6 +99,7 @@
                                 <!-- Rating stars will be added dynamically using JavaScript -->
                             </div>
                         </div>
+                        @if(Auth::check() && Auth::user()->hasSuccessfulBooking())
                         <form id="ulasan-form" action="{{ route('ulasan.store') }}" method="post">
                             @csrf
                             <input type="hidden" name="kost_id" value="{{ $kosts->id }}">
@@ -115,6 +119,7 @@
                                 <input type="submit" value="Kirim Ulasan Anda" class="btn btn-primary px-3">
                             </div>
                         </form>
+                        @endif
                     </div>
 
                     <script>
@@ -160,7 +165,7 @@
             deskripsiTab.classList.remove('show', 'active');
 
         });
-        
+
 
         // Ketika tombol "Deskripsi" ditekan, aktifkan tab deskripsi
         document.getElementById('deskripsi-tab').addEventListener('click', function (e) {

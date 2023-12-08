@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BuktiTransaksi;
 use Illuminate\Http\Request;
 use App\Models\Pesanan;
 use App\Models\Kost;
@@ -79,18 +80,48 @@ class PesananController extends Controller
             $pesanan->status = $request->input('status') ?: "Menunggu Verifikasi";
 
             $pesanan->save();
-
-            return redirect()->route('success');
-        }
+            return view('pembayaran.success', ['pesananId' => $pesanan->id], ['userId'=>$pesanan->user_id]);
+            }
     }
+
+    public function buktiTransaksi(Request $request, $id){
+        // dd($request->all());
+
+
+        $validator = Validator::make($request->all(), [
+            'gambar' => 'required|string'
+        ]);
+
+        if ($validator->fails()){
+            $errors = $validator->messages();
+            foreach ($errors->all() as $errors){
+                echo $errors;
+            }
+        }
+
+        else{
+            // $tgl_sewa = date("Y-m-d".strtotime($request->input('tgl_sewa')));
+
+            $validatedData =  $validator->validate();
+
+            $pesanan =  new BuktiTransaksi();
+            $pesanan->pesanan_id = $request->input('pesanan_id');
+            $pesanan->user_id = auth()->user()->id;
+            $pesanan->gambar = $validatedData['gambar'];
+
+            $pesanan->save();
+
+            return view('landing.landing');
+        }
+
+    }
+
     public function transaksi(){
         $userId = Auth::id();
         $pesanan = Pesanan::where('user_id', $userId)->get();
         return view('riwayat_transaksi.transaksi', compact('pesanan'));
 
     }
-
-
     /**
      * Show the form for creating a new resource.
      */
