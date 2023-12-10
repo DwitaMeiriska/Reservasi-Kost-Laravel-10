@@ -15,23 +15,23 @@
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4 posts-list">
 
-          @foreach($kost as $item) <!-- Mengganti variabel loop untuk menghindari konflik dan memperjelas -->
+          @foreach($kost as $kost) <!-- Mengganti variabel loop untuk menghindari konflik dan memperjelas -->
             <div class="col-xl-4 col-md-6">
               <div class="post-item position-relative h-100">
 
                 <div class="post-img position-relative overflow-hidden">
-                    <img src="{{ Storage::url($item->gambar) }}" class="card-img-top" alt="Gambar Kost" style="max-width: 100%; height: auto;">
+                    <img src="{{ Storage::url($kost->gambar) }}" class="card-img-top" alt="Gambar Kost" style="max-width: 100%; height: auto;">
                 </div>
 
                 <div class="post-content d-flex flex-column">
-                  <h3 class="post-title">{{ $item->nama_kamar }}</h3>
+                  <h3 class="post-title">{{ $kost->nama_kamar }}</h3>
                   <div class="meta d-flex align-items-center">
                     <div class="d-flex align-items-center">
-                      <i class="bi bi-cash"></i> <span class="ps-2">{{ $item->harga_kamar }}/bulan</span>
+                      <i class="bi bi-cash"></i> <span class="ps-2">{{ $kost->harga_kamar }}/bulan</span>
                     </div>
                   </div>
                   <hr>
-                  <a href="{{ route('show', ['id' => $item->id]) }}" class="readmore stretched-link">
+                  <a href="{{ route('show', ['id' => $kost->id]) }}" class="readmore stretched-link">
                       <span>Detail Kamar</span>
                       <i class="bi bi-arrow-right"></i>
                   </a>

@@ -253,7 +253,7 @@
             <div class="testimonial-wrap">
               <div class="testimonial-item">
                 <img src="{{ asset('image/img-blank.png') }}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
+                <h3>Ratnayanti Simbolon</h3>
                 <h4>Penghuni</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
@@ -273,7 +273,7 @@
             <div class="testimonial-wrap">
               <div class="testimonial-item">
                 <img src="{{ asset('image/img-blank.png') }}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
+                <h3>Satria Bagus</h3>
                 <h4>Penghuni</h4>
                 <div class="stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i

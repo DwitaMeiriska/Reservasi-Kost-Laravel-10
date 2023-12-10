@@ -45,7 +45,7 @@
 
                             Mohon konfirmasi ketersediaan stok dan informasi pembayaran lebih lanjut. Saya siap untuk melakukan pembayaran segera.
 
-                            Terima kasih banyak! Saya sangat menantikan respons dari Anda." target="_blank">+1 5589 55488 55 ></a></p>
+                            Terima kasih banyak! Saya sangat menantikan respons dari Anda." target="_blank"><+62 8521 5611 472 ></a></p>
                     </div>
                 </div>
                 <!-- End Info Item -->

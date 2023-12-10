@@ -93,7 +93,7 @@
                 </div>
 
                 <hr class="mb-4">
-                <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                <button type="submit" class="btn btn-primary btn-block">Bayar</button>
               </form>
         <table class="table table-bordered">
             <thead>
